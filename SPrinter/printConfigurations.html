@@ -1,6 +1,5 @@
-<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" >
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
     <form class="form-horizontal">
       <!-- Pages -->
       <div class="form-group">
@@ -20,10 +19,10 @@
         <label for="orientation" class="col-sm-4">Orientation</label>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-primary active">
-            <input type="radio" name="page" id="orientationOption1" autocomplete="off" checked>Portrait
+            <input type="radio" name="orientation" id="portrait" autocomplete="off" checked>Portrait
           </label>
           <label class="btn btn-primary">
-            <input type="radio" name="page" id="orientationOption2" autocomplete="off">Landscape
+            <input type="radio" name="orientation" id="landscape" autocomplete="off">Landscape
           </label>
         </div>
       </div>
@@ -33,7 +32,7 @@
         <label for="doubleSided" class="col-sm-4">Double sided</label>
         <div class="checkbox">
           <label class="switch">
-            <input type="checkbox" name="doubleSided" value="">
+            <input type="checkbox" name="doubleSided" checked="checked">
             <div class="slider round"></div>
           </label>
         </div>
@@ -44,33 +43,87 @@
         <label for="flipOn" class="col-sm-4">Flip On</label>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-primary active">
-            <input type="radio" name="page" id="flipOnOption1" autocomplete="off" checked>Long Edge
+            <input type="radio" name="flipOn" id="longEdge" autocomplete="off" checked>Long Edge
           </label>
           <label class="btn btn-primary">
-            <input type="radio" name="page" id="flipOnOption2" autocomplete="off">Short Edge
+            <input type="radio" name="flipOn" id="shortEdge" autocomplete="off">Short Edge
           </label>
         </div>
       </div>
 
       <!-- Pages per sheet -->
       <div class="form-group">
-          <label for="flipOn" class="col-sm-4">Pages Per Sheet</label>
+        <div>
+          <label for="pagesPerSheet" class="col-sm-4">Pages Per Sheet</label>
           <div class="col-sm-8">
             <div class="range-slider">
-              <input class="range-slider__range" type="range" value="1" min="1" max="9" onchange="rangevalue.value=value">
-              <output id="rangevalue">50</output>
+              <input class="range-slider__range" type="range" value="1" min="1" max="9">
+              <span class="range-slider__value">1</span>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Number of copies -->
+      <div class="form-group">
+        <label for="numberofCopies" class="col-sm-4">Number of Copies</label>
+        <div class="col-sm-8" style="margin-left: -15px; padding-right: 15%;">
+          <input type="number" class="form-control" id="numberofCopies" value='1'>
+        </div>
+        </div>
     </form>
   </div>
-  <div class="col-md-5">graw;hvtoeihb poihryb[i hribh tbjteipjbr kvaihdwpihofgr[i]] feafeafueiafhiura hfuirhsiughrsuihgruishgrsiuhifr</div>
+  <div class="col-md-6 print-preview-border">
+    <img id="preview-image" src="assets/Portrait Long Edge.png" class="img-responsive print-preview" alt="Responsive image">
+  </div>
   <div class="col-md-3">rfouaghviugrvlithealu gug wrligf iregfiersgf ukyrgf vkgrwffeaijfeaoifjeoiajfeafoeaifjeaafrwa gikrg irwa iw</div>
 </div>
 
 <script>
-  var val = $('input[name="page"]').val();
-  console.log(val);
+  $('input:checkbox[name=doubleSided]').change(function() {
+    displayPrintPreview();
+  });
+
+  $('input:radio[name=orientation]').change(function() {
+    displayPrintPreview();
+  });
+
+  $('input:radio[name=flipOn]').change(function() {
+    displayPrintPreview();
+  });
+
+  function displayPrintPreview() {
+    var orientation = $('input[name="orientation"]:checked').attr('id');
+    // console.log("orientation:", orientation);
+    var doubleSided = $('input[name="doubleSided"]:checked').val();
+    // console.log("doubleSided:", doubleSided);
+    var flipOn = $('input[name="flipOn"]:checked').attr('id');
+    // console.log("flipOn", flipOn);;
+
+    if(doubleSided) {
+      if(orientation == "portrait" && flipOn == "longEdge") {
+        $("#preview-image").attr("src","assets/Portrait Long Edge.png");
+      }
+      else if(orientation == "portrait" && flipOn == "shortEdge") {
+        $("#preview-image").attr("src","assets/Portrait Short Edge.png");
+      }
+      else if(orientation == "landscape" && flipOn == "longEdge") {
+        $("#preview-image").attr("src","assets/Landscape Long Edge.png");
+      }
+      else if(orientation == "landscape" && flipOn == "shortEdge") {
+        $("#preview-image").attr("src","assets/Landscape Short Edge.png");
+      }
+    }
+    else {
+      console.log("not double sided");
+      if(orientation == "portrait") {
+        $("#preview-image").attr("src","assets/Portrait.png");
+      }
+      else {
+        $("#preview-image").attr("src","assets/Landscape.png");
+      }
+    }
+  }
 
   var rangeSlider = function(){
     var slider = $('.range-slider'),

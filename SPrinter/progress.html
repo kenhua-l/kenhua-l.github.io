@@ -14,32 +14,23 @@
                         </a>
                     </li>
 
-                    <!-- <li role="presentation" class="disabled"> -->
-                    <li role="presentation">
+                    <li role="presentation" class="disabled">
                       <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Print Configurations">
-  <!-- <li role="presentation">
-  <a href="#step2" data-toggle="tab" role="tab" title="Print Configurations"> -->
                         <span class="round-tab">
                           <i class="glyphicon glyphicon-pencil"></i>
                         </span>
                       </a>
                     </li>
-                    <!-- <li role="presentation" class="disabled"> -->
-                    <li role="presentation">
+                    <li role="presentation" class="disabled">
                       <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Select Printer">
-  <!-- <li role="presentation">
-  <a href="#step3" data-toggle="tab" role="tab" title="Select Printer"> -->
                         <span class="round-tab">
                           <i class="glyphicon glyphicon-picture"></i>
                         </span>
                       </a>
                     </li>
 
-                    <!-- <li role="presentation" class="disabled"> -->
-                    <li role="presentation">
+                    <li role="presentation" class="disabled">
                       <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
-  <!-- <li role="presentation" class="disabled">
-  <a href="#complete" data-toggle="tab" role="tab" title="Complete"> -->
                         <span class="round-tab">
                           <i class="glyphicon glyphicon-ok"></i>
                         </span>
@@ -52,9 +43,8 @@
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
                       <div>
-                      <!-- <button type="button" class="btn btn-primary next-step pull-right upload-complete" disabled>Next</button> -->
-                      <button type="button" class="btn btn-primary next-step pull-right upload-complete" disabled="disabled">Next</button>
-                      <div id="upload"></div>
+                        <button type="button" class="btn btn-primary next-step pull-right upload-complete" disabled="disabled">Next</button>
+                        <div id="upload"></div>
                       </div>
                     </div>
 
@@ -78,7 +68,7 @@
                       <h3>Complete</h3>
                       <p>You have successfully completed all steps.</p>
 
-                      <div id="viewPrintJobs"></div>
+                      <div id="printJobsTable"></div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -91,31 +81,27 @@
 <script>
   $(document).ready(function () {
   //Initialize tooltips
-  $('.nav-tabs > li a[title]').tooltip();
+    $('.nav-tabs > li a[title]').tooltip();
 
-  //Wizard
-  $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+    //Wizard
+    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+      console.log("click");
+      var $target = $(e.target);
+      if($target.parent().hasClass('disabled')) {
+        console.log('disabled');
+        return false;
+      }
+    });
 
-  var $target = $(e.target);
-
-  if ($target.parent().hasClass('disabled')) {
-  return false;
-  }
-  });
-
-  $(".next-step").click(function (e) {
-
-  var $active = $('.wizard .nav-tabs li.active');
-  $active.next().removeClass('disabled');
-  nextTab($active);
-
-  });
-  $(".prev-step").click(function (e) {
-
-  var $active = $('.wizard .nav-tabs li.active');
-  prevTab($active);
-
-  });
+    $(".next-step").click(function (e) {
+      var $active = $('.wizard .nav-tabs li.active');
+      $active.next().removeClass('disabled');
+      nextTab($active);
+    });
+    $(".prev-step").click(function (e) {
+      var $active = $('.wizard .nav-tabs li.active');
+      prevTab($active);
+    });
   });
 
   function nextTab(elem) {
@@ -138,7 +124,7 @@
   });
 
   $(function(){
-    $("#viewPrintJobs").load("viewPrintJobs.html");
+    $("#printJobsTable").load("printJobsTable.html");
   });
 
   $('.psts').on('click', function() {
