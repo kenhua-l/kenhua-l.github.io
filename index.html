@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Ken Porfolio</title>
-        <script src="js/jquery-3.1.1.js"></script>
-        <script src="js/script.js"></script>
-    </head>
-    <body>
-        <div id="navbar"></div>
-        
-        <div id="footer">h</div>
-    </body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SoC Printer Log In</title>
+
+    <meta name="author" content="CS3240 Group 11">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+</head>
+
+<body class="login-background container-fluid">
+    <div class="login-card">
+      <h2 class='login_title text-center'>SoC Printer</h2>
+      <hr>
+      <form id="login" class="form-signin" action="main.html">
+        <span id="reauth-email" class="reauth-email"></span>
+        <p class="input_title">Email</p>
+        <input type="email" id="inputEmail" class="login_box" placeholder="NUS Email" required autofocus>
+        <p class="input_title">Password</p>
+        <input type="password" id="inputPassword" class="login_box" placeholder="password" required>
+        <button id="submitBtn" class="btn btn-lg btn-primary submitBtn login-btn" type="submit">Login</button>
+      </form><!-- /form -->
+    </div><!-- /card-container -->
+</body>
 </html>

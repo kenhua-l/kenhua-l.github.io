@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" >
+<div class="row">
+  <div class="col-md-4">
+    <form class="form-horizontal">
+      <!-- Pages -->
+      <div class="form-group">
+        <label for="page" class="col-sm-4">Page</label>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="page" id="pageOption1" autocomplete="off" checked>All
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="page" id="pageOption2" autocomplete="off">Custom Range
+          </label>
+        </div>
+      </div>
+
+      <!-- Orientation -->
+      <div class="form-group">
+        <label for="orientation" class="col-sm-4">Orientation</label>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="page" id="orientationOption1" autocomplete="off" checked>Portrait
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="page" id="orientationOption2" autocomplete="off">Landscape
+          </label>
+        </div>
+      </div>
+
+      <!-- Double sided -->
+      <div class="form-group">
+        <label for="doubleSided" class="col-sm-4">Double sided</label>
+        <div class="checkbox">
+          <label class="switch">
+            <input type="checkbox" name="doubleSided" value="">
+            <div class="slider round"></div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Flip On -->
+      <div class="form-group">
+        <label for="flipOn" class="col-sm-4">Flip On</label>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="page" id="flipOnOption1" autocomplete="off" checked>Long Edge
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="page" id="flipOnOption2" autocomplete="off">Short Edge
+          </label>
+        </div>
+      </div>
+
+      <!-- Pages per sheet -->
+      <div class="form-group">
+          <label for="flipOn" class="col-sm-4">Pages Per Sheet</label>
+          <div class="col-sm-8">
+            <div class="range-slider">
+              <input class="range-slider__range" type="range" value="1" min="1" max="9" onchange="rangevalue.value=value">
+              <output id="rangevalue">50</output>
+            </div>
+          </div>
+        </div>
+    </form>
+  </div>
+  <div class="col-md-5">graw;hvtoeihb poihryb[i hribh tbjteipjbr kvaihdwpihofgr[i]] feafeafueiafhiura hfuirhsiughrsuihgruishgrsiuhifr</div>
+  <div class="col-md-3">rfouaghviugrvlithealu gug wrligf iregfiersgf ukyrgf vkgrwffeaijfeaoifjeoiajfeafoeaifjeaafrwa gikrg irwa iw</div>
+</div>
+
+<script>
+  var val = $('input[name="page"]').val();
+  console.log(val);
+
+  var rangeSlider = function(){
+    var slider = $('.range-slider'),
+        range = $('.range-slider__range'),
+        value = $('.range-slider__value');
+
+    slider.each(function(){
+      value.each(function(){
+        var value = $(this).prev().attr('value');
+        $(this).html(value);
+      });
+
+      range.on('input', function(){
+        ticks=[1,2,4,6,8,10,12,14,16];
+        var tickValue = ticks[this.value-1];
+        $(this).next(value).html(tickValue);
+      });
+    });
+  };
+
+  rangeSlider();
+</script>
