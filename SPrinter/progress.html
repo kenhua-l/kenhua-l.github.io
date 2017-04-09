@@ -1,5 +1,5 @@
 <section>
-  <div class="wizard">
+  <div class="wizard main-card">
       <div class="wizard-inner">
           <div class="connecting-line"></div>
           <ul class="nav nav-tabs" role="tablist">
@@ -46,6 +46,7 @@
           <div class="tab-content">
               <div class="tab-pane active" role="tabpanel" id="step1">
                 <div class="row buttons-panel">
+                  <!-- <button type="button" class="btn btn-primary btn-info-full next-step upload-complete" disabled="disabled">Next</button> -->
                   <button type="button" class="btn btn-primary btn-info-full next-step upload-complete" disabled="disabled">Next</button>
                 </div>
                 <div class="row">
@@ -55,7 +56,7 @@
 
               <div class="tab-pane" role="tabpanel" id="step2">
                 <div class="row buttons-panel">
-                  <button type="button" class="btn btn-default prev-step">Previous</button>
+                  <button type="button" class="btn btn-primary prev-step">Previous</button>
                   <button type="button" class="btn btn-primary next-step">Next</button>
                 </div>
                 <div class="row">
@@ -65,16 +66,17 @@
 
               <div class="tab-pane" role="tabpanel" id="step3">
                 <div class="row buttons-panel">
-                    <button type="button" class="btn btn-default prev-step">Previous</button>
+                    <button type="button" class="btn btn-primary prev-step">Previous</button>
                     <button type="button" class="btn btn-primary btn-info-full next-step print-btn" disabled="disabled">Print</button>
                 </div>
                 <div id="printer"></div>
               </div>
 
               <div class="tab-pane" role="tabpanel" id="complete">
-                <h3>Complete</h3>
-                <p>You have successfully completed all steps.</p>
-
+                <div class="complete-printing">
+                  <h3>Complete</h3>
+                  <p>You have successfully completed all steps.</p>
+                </div>
                 <div id="printJobsTable"></div>
               </div>
               <div class="clearfix"></div>

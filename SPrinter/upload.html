@@ -1,16 +1,16 @@
 <div class="drop-files-container">
   <div class="drop-files">
     <div class="upload-document">
-        <img src="./assets/cloud-computing.png" height="100px"/>
-        <span class="upload-btn">
-          <button type="button" class="btn btn-primary">Choose file to upload</button>
-          <p class='document-name'>or drag and drop here</p>
-        </span>
+      <img src="./assets/cloud-computing.png" height="100px"/>
     </div>
     <div class="output">
       <img src="./assets/pdf.png" height="70px" />
       <p class="document-name"></p>
     </div>
+    <span class="upload-btn">
+      <button type="button" class="btn btn-primary">Choose file to upload</button>
+      <p>or drag and drop here</p>
+    </span>
   </div>
 </div>
 
@@ -58,7 +58,7 @@
                 triggerCallback(e, callback);
             });
 
-            ele.addEventListener('click', function() {
+            $('.upload-btn').click( function() {
                 input.value = null;
                 input.click();
             });

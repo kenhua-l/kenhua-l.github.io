@@ -1,5 +1,12 @@
 body {
   background-color: #4E93E3;
+  font-family: 'Raleway', sans-serif;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  background-color: transparent;
+  color: white;
 }
 
 .navbar-default {
@@ -13,10 +20,26 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.navbar-brand:hover,
+.navbar-brand:focus {
+  background-color: transparent;
+  color: #FCFDFC;
+}
+
 .navbar-default .navbar-nav li a {
   color: #FCFDFC;
   margin: 0px 20px;
   font-family: 'Raleway', sans-serif;
+}
+
+.navbar-default .navbar-nav li .active-span {
+  display: block;
+  width: calc(100% - 65px);
+  height: 1px;
+  background: #FCFCFD;
+  position: absolute;
+  left: 33px;
+  top: 40px
 }
 
 .login-background {
@@ -133,7 +156,7 @@ body {
   display: block;
 }
 
-.wizard {
+.main-card {
   max-width: 1000px;
   min-height: 650px;
   margin: 0px auto 40px auto;
@@ -146,6 +169,19 @@ body {
   -webkit-box-shadow: 0px 18px 25px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 18px 25px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 18px 25px 0px rgba(0,0,0,0.75);
+}
+
+.main-card h1 {
+  text-align: center;
+}
+
+.main-card table {
+  max-width: 850px;
+  margin: 0px auto;
+}
+
+.print-jobs-container {
+  padding: 0px 40px;
 }
 
 .wizard .nav-tabs {
@@ -315,12 +351,15 @@ span.round-tab:hover {
 }
 
 .print-preview {
-  max-width: 200px;
+  max-width: 450px;
+  max-height: 329px;
   margin: auto;
+  margin-top: 10px;
 }
 
 .print-preview-border {
   border: 3px solid #353F4F;
+  min-height: 375px;
 }
 
 .buttons-panel {
@@ -414,11 +453,11 @@ span.round-tab:hover {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #337ab7;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #337ab7;
 }
 
 input:checked + .slider:before {
@@ -530,7 +569,7 @@ input::-moz-focus-outer {
 }
 
 .btn-group a {
-  color: #353F4F;
+  color: #FCFCFD;
   text-decoration: none;
   position: relative;
   display: inline-block;
@@ -541,10 +580,18 @@ input::-moz-focus-outer {
   z-index: 1;
 }
 
+
+.btn-group .button-gray {
+  background-color: #CCC;
+  transition: 300ms ease-in-out;
+  opacity: 0.2;
+  color: #353F4F;
+}
+
 .page-btn-background-one {
   position: absolute;
-  background-color: #ec3853;
-  width: 46px;
+  background-color: #337ab7;
+  width: 47px;
   height: 26px;
   border-radius: 20px;
   top: 2px;
@@ -554,8 +601,8 @@ input::-moz-focus-outer {
 
 .page-btn-background-two {
   position: absolute;
-  background-color: #ec3853;
-  width: 124px;
+  background-color: #337ab7;
+  width: 128px;
   height: 26px;
   border-radius: 20px;
   top: 2px;
@@ -565,8 +612,8 @@ input::-moz-focus-outer {
 
 .orientation-btn-background-one {
   position: absolute;
-  background-color: #ec3853;
-  width: 76px;
+  background-color: #337ab7;
+  width: 77px;
   height: 26px;
   border-radius: 20px;
   top: 2px;
@@ -576,8 +623,8 @@ input::-moz-focus-outer {
 
 .orientation-btn-background-two {
   position: absolute;
-  background-color: #ec3853;
-  width: 101px;
+  background-color: #337ab7;
+  width: 104px;
   height: 26px;
   border-radius: 20px;
   top: 2px;
@@ -585,10 +632,21 @@ input::-moz-focus-outer {
   transition: 300ms ease-in-out;
 }
 
+.double-sided-disabled-one {
+  position: absolute;
+  background-color: grey;
+  width: 101px;
+  height: 26px;
+  border-radius: 20px;
+  top: 2px;
+  left: 2px;
+  transition: 300ms ease-in-out;
+}
+
 .flipOn-btn-background-one {
   position: absolute;
-  background-color: #ec3853;
-  width: 98px;
+  background-color: #337ab7;
+  width: 101px;
   height: 26px;
   border-radius: 20px;
   top: 2px;
@@ -598,12 +656,12 @@ input::-moz-focus-outer {
 
 .flipOn-btn-background-two {
   position: absolute;
-  background-color: #ec3853;
-  width: 101px;
+  background-color: #337ab7;
+  width: 104px;
   height: 26px;
   border-radius: 20px;
   top: 2px;
-  left: 109px;
+  left: 110px;
   transition: 300ms ease-in-out;
 }
 
@@ -620,32 +678,39 @@ input::-moz-focus-outer {
 }
 
 .print-btn {
-  color: #353F4F;
-  background-color: #7C8C9A;
+  /*color: #353F4F;*/
+  /*background-color: #7C8C9A;*/
   width: 120px;
   height: 40px;
-  border-radius: 30px;
-  border: 2px solid #353F4F;
+  /*border-radius: 30px;
+  border: 2px solid #353F4F;*/
 }
 
 .prev-step {
   margin: 0px auto 20px auto;
   display: inline-block;
-  color: #353F4F;
-  background-color: #00bfff;
+  /*color: #353F4F;*/
+  /*background-color: #00bfff;*/
   width: 80px;
   height: 40px;
-  border-radius: 5px;
-  border: 2px solid #353F4F;
+  /*border-radius: 5px;
+  border: 2px solid #353F4F;*/
 }
 
 .next-step {
   margin: 0px auto 20px auto;
   display: inline-block;
-  color: #353F4F;
-  background-color: #00bfff;
+  /*color: #353F4F;*/
   width: 80px;
   height: 40px;
-  border-radius: 5px;
-  border: 2px solid #353F4F;
+  /*border-radius: 5px;
+  border: 2px solid #353F4F;*/
+}
+
+.complete-printing {
+  margin-left: 5%;
+}
+
+#printJobsTable {
+  margin-top: 2%;
 }

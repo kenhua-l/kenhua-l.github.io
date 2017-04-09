@@ -6,8 +6,8 @@
         <label for="page" class="col-sm-3">Pages</label>
         <div class="col-sm-9">
           <div class="btn-group">
-            <a href="#" class="btn-one page-btn-one">All</a>
-            <a href="#" class="btn-two page-btn-two">Custom Range</a>
+            <a class="btn-one page-btn-one">All</a>
+            <a class="btn-two page-btn-two button-gray">Custom Range</a>
             <div class="page-btn-background-one"></div>
           </div>
         </div>
@@ -18,8 +18,8 @@
         <label for="orientation" class="col-sm-3">Orientation</label>
         <div class="col-sm-9">
           <div class="btn-group">
-            <a href="#" class="btn-one orientation-btn-one">Portrait</a>
-            <a href="#" class="btn-two orientation-btn-two">Landscape</a>
+            <a class="btn-one orientation-btn-one">Portrait</a>
+            <a class="btn-two orientation-btn-two button-gray">Landscape</a>
             <div class="orientation-btn-background-one"></div>
           </div>
         </div>
@@ -41,8 +41,8 @@
         <label for="flipOn" class="col-sm-3">Flip On</label>
         <div class="col-sm-9">
           <div class="btn-group">
-            <a href="#" class="btn-one flipOn-btn-one">Long Edge</a>
-            <a href="#" class="btn-two flipOn-btn-two">Short Edge</a>
+            <a class="btn-one flipOn-btn-one">Long Edge</a>
+            <a class="btn-two flipOn-btn-two button-gray">Short Edge</a>
             <div class="flipOn-btn-background-one"></div>
           </div>
         </div>
@@ -83,13 +83,12 @@
   var doubleSided = $('input[name="doubleSided"]:checked').val();
 
   function displayPrintPreview() {
-    console.log("doubleSided:", doubleSided);
-    console.log("Page: ", page);
-    console.log("Orientation: ", orientation);
-    console.log("Flip On: ", flipOn);
+    // console.log("doubleSided:", doubleSided);
+    // console.log("Page: ", page);
+    // console.log("Orientation: ", orientation);
+    // console.log("Flip On: ", flipOn);
 
     if (doubleSided == undefined) {
-      console.log("not double sided");
       if (orientation == "portrait") {
         $("#preview-image").attr("src","assets/Portrait.png");
       } else if (orientation == "landscape"){
@@ -132,44 +131,84 @@
 
   $('input:checkbox[name=doubleSided]').change(function() {
     doubleSided = $('input[name="doubleSided"]:checked').val();
+    if (doubleSided == undefined) {
+      $('.flipOn-btn-one').addClass('button-gray');
+      $('.flipOn-btn-two').addClass('button-gray');
+      $('.flipOn-btn-background-one').hide();
+      $('.flipOn-btn-background-two').hide();
+    }
+    else
+    {
+      if( $('.flipOn-btn-background-one').size() == 1) {
+        $('.flipOn-btn-one').removeClass('button-gray');
+        $('.flipOn-btn-background-one').show();
+        console.log("one");
+      } else {
+        $('.flipOn-btn-two').removeClass('button-gray');
+        $('.flipOn-btn-background-two').show();
+        console.log("two");
+      }
+      // $('.flipOn-btn-one').removeClass('button-gray');
+      // $('.flipOn-btn-background-one').show();
+    }
     displayPrintPreview();
   });
 
   // JQuery to be able to toggle the print configuration buttons
   $('.page-btn-one').on('click', function() {
+    $('.page-btn-two').addClass('button-gray');
+    $('.page-btn-one').removeClass('button-gray');
     $('.page-btn-background-two').removeClass('page-btn-background-two').addClass('page-btn-background-one');
     page = "all";
     displayPrintPreview();
   });
 
   $('.page-btn-two').on('click', function() {
+    $('.page-btn-one').addClass('button-gray');
+    $('.page-btn-two').removeClass('button-gray');
     $('.page-btn-background-one').removeClass('page-btn-background-one').addClass('page-btn-background-two');
     page = "custom";
     displayPrintPreview();
   });
 
   $('.orientation-btn-one').on('click', function() {
+    $('.orientation-btn-two').addClass('button-gray');
+    $('.orientation-btn-one').removeClass('button-gray');
     $('.orientation-btn-background-two').removeClass('orientation-btn-background-two').addClass('orientation-btn-background-one');
     orientation = "portrait";
     displayPrintPreview();
   });
 
   $('.orientation-btn-two').on('click', function() {
+    $('.orientation-btn-one').addClass('button-gray');
+    $('.orientation-btn-two').removeClass('button-gray');
     $('.orientation-btn-background-one').removeClass('orientation-btn-background-one').addClass('orientation-btn-background-two');
     orientation = "landscape";
     displayPrintPreview()
   });
 
   $('.flipOn-btn-one').on('click', function() {
-    $('.flipOn-btn-background-two').removeClass('flipOn-btn-background-two').addClass('flipOn-btn-background-one');
-    flipOn = "longEdge";
-    displayPrintPreview();
+    if (doubleSided == undefined) {
+      // console.log('Not Clickable. Double Sided is off');
+    } else {
+      $('.flipOn-btn-two').addClass('button-gray');
+      $('.flipOn-btn-one').removeClass('button-gray');
+      $('.flipOn-btn-background-two').removeClass('flipOn-btn-background-two').addClass('flipOn-btn-background-one');
+      flipOn = "longEdge";
+      displayPrintPreview();
+    }
   });
 
   $('.flipOn-btn-two').on('click', function() {
-    $('.flipOn-btn-background-one').removeClass('flipOn-btn-background-one').addClass('flipOn-btn-background-two');
-    flipOn = "shortEdge";
-    displayPrintPreview();
+    if(doubleSided == undefined) {
+      // console.log('Not Clickable. Double Sided is off');
+    } else {
+      $('.flipOn-btn-one').addClass('button-gray');
+      $('.flipOn-btn-two').removeClass('button-gray');
+      $('.flipOn-btn-background-one').removeClass('flipOn-btn-background-one').addClass('flipOn-btn-background-two');
+      flipOn = "shortEdge";
+      displayPrintPreview();
+    }
   });
 
   $('.psts').on('click', function() {

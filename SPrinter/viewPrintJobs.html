@@ -7,7 +7,7 @@
 
     <meta name="author" content="CS3240 Group 11">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="./style/style.css">
@@ -22,12 +22,17 @@
   <div class="row">
     <div id="navbar"></div>
   </div>
-  <div id="printJobsTable"></div>
+  <div class="main-card print-jobs-container">
+    <h1><strong>Your print jobs</strong></h1>
+    <div id="printJobsTable"></div>
+  </div>
 </body>
 
 <script>
     $(function() {
-        $("#navbar").load("navbar.html");
+      $("#navbar").load("navbar.html", function() {
+        console.log($('#myNavbar ul li:nth-child(2)').find('span').addClass('active-span'));
+      });
     });
     $(function() {
         $("#printJobsTable").load("printJobsTable.html");
