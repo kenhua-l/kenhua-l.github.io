@@ -1,82 +1,87 @@
-<div class="container">
-  <div class="row">
-  <section>
-        <div class="wizard">
-            <div class="wizard-inner">
-                <div class="connecting-line"></div>
-                <ul class="nav nav-tabs" role="tablist">
+<section>
+  <div class="wizard">
+      <div class="wizard-inner">
+          <div class="connecting-line"></div>
+          <ul class="nav nav-tabs" role="tablist">
 
-                    <li role="presentation" class="active">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Upload File">
-                            <span class="round-tab">
-                                <i class="glyphicon glyphicon-folder-open"></i>
-                            </span>
-                        </a>
-                    </li>
+              <li role="presentation" class="active">
+              <!-- <li role="presentation"> -->
+                  <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Upload File">
+                      <span class="round-tab">
+                          <i class="glyphicon glyphicon-folder-open"></i>
+                      </span>
+                  </a>
+              </li>
 
-                    <li role="presentation" class="disabled">
-                      <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Print Configurations">
-                        <span class="round-tab">
-                          <i class="glyphicon glyphicon-pencil"></i>
-                        </span>
-                      </a>
-                    </li>
-                    <li role="presentation" class="disabled">
-                      <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Select Printer">
-                        <span class="round-tab">
-                          <i class="glyphicon glyphicon-picture"></i>
-                        </span>
-                      </a>
-                    </li>
+              <li role="presentation" class="disabled">
+              <!-- <li role="presentation"> -->
+                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Print Configurations">
+                  <span class="round-tab">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </span>
+                </a>
+              </li>
 
-                    <li role="presentation" class="disabled">
-                      <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
-                        <span class="round-tab">
-                          <i class="glyphicon glyphicon-ok"></i>
-                        </span>
-                      </a>
-                    </li>
-                </ul>
-            </div>
+              <li role="presentation" class="disabled">
+              <!-- <li role="presentation"> -->
+                <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Select Printer">
+                  <span class="round-tab">
+                    <i class="glyphicon glyphicon-picture"></i>
+                  </span>
+                </a>
+              </li>
 
-            <form role="form">
-                <div class="tab-content">
-                    <div class="tab-pane active" role="tabpanel" id="step1">
-                      <div>
-                        <button type="button" class="btn btn-primary next-step pull-right upload-complete" disabled="disabled">Next</button>
-                        <div id="upload"></div>
-                      </div>
-                    </div>
+              <li role="presentation" class="disabled">
+              <!-- <li role="presentation"> -->
+                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                  <span class="round-tab">
+                    <i class="glyphicon glyphicon-ok"></i>
+                  </span>
+                </a>
+              </li>
+          </ul>
+      </div>
 
-                    <div class="tab-pane" role="tabpanel" id="step2">
-                      <div id="printConfigurations"></div>
-                      <div class="row">
-                        <button type="button" class="btn btn-default prev-step">Previous</button>
-                        <button type="button" class="btn btn-primary next-step">Save and continue</button>
-                      </div>
-                    </div>
-
-                    <div class="tab-pane" role="tabpanel" id="step3">
-                      <div class="row print-panel">
-                          <button type="button" class="btn btn-default prev-step">Previous</button>
-                          <button type="button" class="btn btn-primary btn-info-full next-step print-btn" disabled="disabled">Print</button>
-                      </div>
-                      <div id="printer"></div>
-                    </div>
-
-                    <div class="tab-pane" role="tabpanel" id="complete">
-                      <h3>Complete</h3>
-                      <p>You have successfully completed all steps.</p>
-
-                      <div id="printJobsTable"></div>
-                    </div>
-                    <div class="clearfix"></div>
+      <form role="form">
+          <div class="tab-content">
+              <div class="tab-pane active" role="tabpanel" id="step1">
+                <div class="row buttons-panel">
+                  <button type="button" class="btn btn-primary btn-info-full next-step upload-complete" disabled="disabled">Next</button>
                 </div>
-            </form>
-        </div>
-    </section>
-   </div>
-</div>
+                <div class="row">
+                  <div id="upload"></div>
+                </div>
+              </div>
+
+              <div class="tab-pane" role="tabpanel" id="step2">
+                <div class="row buttons-panel">
+                  <button type="button" class="btn btn-default prev-step">Previous</button>
+                  <button type="button" class="btn btn-primary next-step">Next</button>
+                </div>
+                <div class="row">
+                  <div id="printConfigurations"></div>
+                </div>
+              </div>
+
+              <div class="tab-pane" role="tabpanel" id="step3">
+                <div class="row buttons-panel">
+                    <button type="button" class="btn btn-default prev-step">Previous</button>
+                    <button type="button" class="btn btn-primary btn-info-full next-step print-btn" disabled="disabled">Print</button>
+                </div>
+                <div id="printer"></div>
+              </div>
+
+              <div class="tab-pane" role="tabpanel" id="complete">
+                <h3>Complete</h3>
+                <p>You have successfully completed all steps.</p>
+
+                <div id="printJobsTable"></div>
+              </div>
+              <div class="clearfix"></div>
+          </div>
+      </form>
+  </div>
+</section>
 
 <script>
   $(document).ready(function () {
@@ -85,10 +90,8 @@
 
     //Wizard
     $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-      console.log("click");
       var $target = $(e.target);
       if($target.parent().hasClass('disabled')) {
-        console.log('disabled');
         return false;
       }
     });

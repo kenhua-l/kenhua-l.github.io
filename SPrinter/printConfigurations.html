@@ -1,36 +1,34 @@
 <div class="row">
-  <div class="col-md-3">
-    <form class="form-horizontal">
+  <div class="col-md-5">
+    <form>
       <!-- Pages -->
       <div class="form-group">
-        <label for="page" class="col-sm-4">Page</label>
-        <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-primary active">
-            <input type="radio" name="page" id="pageOption1" autocomplete="off" checked>All
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="page" id="pageOption2" autocomplete="off">Custom Range
-          </label>
+        <label for="page" class="col-sm-3">Pages</label>
+        <div class="col-sm-9">
+          <div class="btn-group">
+            <a href="#" class="btn-one page-btn-one">All</a>
+            <a href="#" class="btn-two page-btn-two">Custom Range</a>
+            <div class="page-btn-background-one"></div>
+          </div>
         </div>
       </div>
 
       <!-- Orientation -->
       <div class="form-group">
-        <label for="orientation" class="col-sm-4">Orientation</label>
-        <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-primary active">
-            <input type="radio" name="orientation" id="portrait" autocomplete="off" checked>Portrait
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="orientation" id="landscape" autocomplete="off">Landscape
-          </label>
+        <label for="orientation" class="col-sm-3">Orientation</label>
+        <div class="col-sm-9">
+          <div class="btn-group">
+            <a href="#" class="btn-one orientation-btn-one">Portrait</a>
+            <a href="#" class="btn-two orientation-btn-two">Landscape</a>
+            <div class="orientation-btn-background-one"></div>
+          </div>
         </div>
       </div>
 
       <!-- Double sided -->
       <div class="form-group">
-        <label for="doubleSided" class="col-sm-4">Double sided</label>
-        <div class="checkbox">
+        <label for="doubleSided" class="col-sm-3">Double sided</label>
+        <div class="checkbox col-sm-9">
           <label class="switch">
             <input type="checkbox" name="doubleSided" checked="checked">
             <div class="slider round"></div>
@@ -40,22 +38,21 @@
 
       <!-- Flip On -->
       <div class="form-group">
-        <label for="flipOn" class="col-sm-4">Flip On</label>
-        <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-primary active">
-            <input type="radio" name="flipOn" id="longEdge" autocomplete="off" checked>Long Edge
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="flipOn" id="shortEdge" autocomplete="off">Short Edge
-          </label>
+        <label for="flipOn" class="col-sm-3">Flip On</label>
+        <div class="col-sm-9">
+          <div class="btn-group">
+            <a href="#" class="btn-one flipOn-btn-one">Long Edge</a>
+            <a href="#" class="btn-two flipOn-btn-two">Short Edge</a>
+            <div class="flipOn-btn-background-one"></div>
+          </div>
         </div>
       </div>
 
       <!-- Pages per sheet -->
-      <div class="form-group">
+      <div class="form-group pagesPerSheet">
         <div>
-          <label for="pagesPerSheet" class="col-sm-4">Pages Per Sheet</label>
-          <div class="col-sm-8">
+          <label for="pagesPerSheet" class="col-sm-3">Pages per sheet</label>
+          <div class="col-sm-9">
             <div class="range-slider">
               <input class="range-slider__range" type="range" value="1" min="1" max="9">
               <span class="range-slider__value">1</span>
@@ -66,42 +63,40 @@
 
       <!-- Number of copies -->
       <div class="form-group">
-        <label for="numberofCopies" class="col-sm-4">Number of Copies</label>
-        <div class="col-sm-8" style="margin-left: -15px; padding-right: 15%;">
-          <input type="number" class="form-control" id="numberofCopies" value='1'>
+        <label for="numberofCopies" class="col-sm-3">Number of copies</label>
+        <div class="col-sm-9" style="margin-left: -15px; padding-right: 15%;">
+          <input type="number" class="form-control" id="numberofCopies" value='1' min='1' >
         </div>
-        </div>
+      </div>
     </form>
   </div>
   <div class="col-md-6 print-preview-border">
     <img id="preview-image" src="assets/Portrait Long Edge.png" class="img-responsive print-preview" alt="Responsive image">
   </div>
-  <div class="col-md-3">rfouaghviugrvlithealu gug wrligf iregfiersgf ukyrgf vkgrwffeaijfeaoifjeoiajfeafoeaifjeaafrwa gikrg irwa iw</div>
+  <div class="col-md-1"></div>
 </div>
 
 <script>
-  $('input:checkbox[name=doubleSided]').change(function() {
-    displayPrintPreview();
-  });
-
-  $('input:radio[name=orientation]').change(function() {
-    displayPrintPreview();
-  });
-
-  $('input:radio[name=flipOn]').change(function() {
-    displayPrintPreview();
-  });
+  var page = "all";
+  var orientation = "portrait";
+  var flipOn = "longEdge";
+  var doubleSided = $('input[name="doubleSided"]:checked').val();
 
   function displayPrintPreview() {
-    var orientation = $('input[name="orientation"]:checked').attr('id');
-    // console.log("orientation:", orientation);
-    var doubleSided = $('input[name="doubleSided"]:checked').val();
-    // console.log("doubleSided:", doubleSided);
-    var flipOn = $('input[name="flipOn"]:checked').attr('id');
-    // console.log("flipOn", flipOn);;
+    console.log("doubleSided:", doubleSided);
+    console.log("Page: ", page);
+    console.log("Orientation: ", orientation);
+    console.log("Flip On: ", flipOn);
 
-    if(doubleSided) {
-      if(orientation == "portrait" && flipOn == "longEdge") {
+    if (doubleSided == undefined) {
+      console.log("not double sided");
+      if (orientation == "portrait") {
+        $("#preview-image").attr("src","assets/Portrait.png");
+      } else if (orientation == "landscape"){
+        $("#preview-image").attr("src","assets/Landscape.png");
+      }
+    } else {
+      if (orientation == "portrait" && flipOn == "longEdge") {
         $("#preview-image").attr("src","assets/Portrait Long Edge.png");
       }
       else if(orientation == "portrait" && flipOn == "shortEdge") {
@@ -112,15 +107,6 @@
       }
       else if(orientation == "landscape" && flipOn == "shortEdge") {
         $("#preview-image").attr("src","assets/Landscape Short Edge.png");
-      }
-    }
-    else {
-      console.log("not double sided");
-      if(orientation == "portrait") {
-        $("#preview-image").attr("src","assets/Portrait.png");
-      }
-      else {
-        $("#preview-image").attr("src","assets/Landscape.png");
       }
     }
   }
@@ -143,6 +129,52 @@
       });
     });
   };
+
+  $('input:checkbox[name=doubleSided]').change(function() {
+    doubleSided = $('input[name="doubleSided"]:checked').val();
+    displayPrintPreview();
+  });
+
+  // JQuery to be able to toggle the print configuration buttons
+  $('.page-btn-one').on('click', function() {
+    $('.page-btn-background-two').removeClass('page-btn-background-two').addClass('page-btn-background-one');
+    page = "all";
+    displayPrintPreview();
+  });
+
+  $('.page-btn-two').on('click', function() {
+    $('.page-btn-background-one').removeClass('page-btn-background-one').addClass('page-btn-background-two');
+    page = "custom";
+    displayPrintPreview();
+  });
+
+  $('.orientation-btn-one').on('click', function() {
+    $('.orientation-btn-background-two').removeClass('orientation-btn-background-two').addClass('orientation-btn-background-one');
+    orientation = "portrait";
+    displayPrintPreview();
+  });
+
+  $('.orientation-btn-two').on('click', function() {
+    $('.orientation-btn-background-one').removeClass('orientation-btn-background-one').addClass('orientation-btn-background-two');
+    orientation = "landscape";
+    displayPrintPreview()
+  });
+
+  $('.flipOn-btn-one').on('click', function() {
+    $('.flipOn-btn-background-two').removeClass('flipOn-btn-background-two').addClass('flipOn-btn-background-one');
+    flipOn = "longEdge";
+    displayPrintPreview();
+  });
+
+  $('.flipOn-btn-two').on('click', function() {
+    $('.flipOn-btn-background-one').removeClass('flipOn-btn-background-one').addClass('flipOn-btn-background-two');
+    flipOn = "shortEdge";
+    displayPrintPreview();
+  });
+
+  $('.psts').on('click', function() {
+    $('.print-btn').prop('disabled', false);
+  })
 
   rangeSlider();
 </script>

@@ -1,98 +1,113 @@
-<div class="row level-one-printer">
-  <div>
-    <h2>COM 1, Level 1</h2>
-  </div>
-  <div class="col-sm-4 printer-card psts-card">
-    <div class="card">
-      <div class="card-block">
-        <h3 class="card-title">psts</h3>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary btn-success psts">Select Printer</a>
-      </div>
+
+<div class="row">
+  <div class="col-sm-12 printer-area">COM1 Basement</div>
+</div>
+
+<div class="row printer-card-container">
+  <div class="col-sm-4">
+    <div class="printer-card psts">
+      <img src="assets/green-printer.png" class="img-responsive" alt="printer image">
+      <p>PSTS-A: Available</p>
     </div>
   </div>
-  <div class="col-sm-4 printer-card pstsb-card">
-    <div class="card">
-      <div class="card-block">
-        <h3 class="card-title">pstsb</h3>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary btn-success pstsb">Select Printer</a>
-      </div>
+  <div class="col-sm-4">
+    <div class="printer-card pstsb">
+      <img src="assets/green-printer.png" class="img-responsive" alt="printer image">
+      <p>PSTS-B: Available</p>
     </div>
   </div>
-  <div class="col-sm-4 printer-card pstsc-card">
-    <div class="card">
-      <div class="card-block">
-        <h3 class="card-title">pstsc</h3>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary btn-danger pstsc">Select Printer</a>
-      </div>
+  <div class="col-sm-4">
+    <div class="printer-card pstsc">
+      <img src="assets/yellow-printer.png" class="img-responsive" alt="printer image">
+      <p>PSTS-C: Busy</p>
     </div>
   </div>
 </div>
-<div class="row basement-printer">
-  <div>
-    <h2>COM 1, Basement</h2>
-  </div>
-  <div class="col-sm-offset-2 col-sm-4 printer-card psc008-card">
-    <div class="card">
-      <div class="card-block">
-        <h3 class="card-title">psc008</h3>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary btn-success psc008">Select Printer</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4 printer-card psc011-card">
-    <div class="card">
-      <div class="card-block">
-        <h3 class="card-title">psc011</h3>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary btn-warning psc011">Select Printer</a>
-      </div>
+
+<div class="row">
+  <div class="col-sm-12 printer-area">Technical Services</div>
+</div>
+
+<div class="row printer-card-container">
+  <div class="col-sm-4">
+    <div class="printer-card psc008">
+      <img src="assets/green-printer.png" class="img-responsive" alt="printer image">
+      <p>PSTS-D: Available</p>
+    </div>  </div>
+  <div class="col-sm-4">
+    <div class="printer-card psc011">
+      <img src="assets/yellow-printer.png" class="img-responsive" alt="printer image">
+      <p>PSTS-E: Busy</p>
+    </div>  </div>
+  <div class="col-sm-4">
+    <div class="printer-card pstsf">
+      <img src="assets/red-printer.png" class="img-responsive" alt="printer image">
+      <p>PSTS-F: Wah lao dowan</p>
     </div>
   </div>
 </div>
+
 <script>
-  $('.psts').on('click', function() {
+  $('.psts').click(function() {
+    console.log("PSTS Clicked");
     $('.print-btn').prop('disabled', false);
-    $('.psts-card').addClass('printer-card-success');
-    $('.pstsb-card').removeClass('printer-card-success');
-    $('.pstsc-card').removeClass('printer-card-danger');
-    $('.psc008-card').removeClass('printer-card-success');
-    $('.psc011-card').removeClass('printer-card-warning');
+    $('.psts').addClass('printer-card-success');
+    $('.pstsb').removeClass('printer-card-success');
+    $('.pstsc').removeClass('printer-card-warning');
+    $('.psc008').removeClass('printer-card-success');
+    $('.psc011').removeClass('printer-card-warning');
+    $('.pstsf').removeClass('printer-card-danger');
   });
-  $('.pstsb').on('click', function() {
+  $('.pstsb').click(function() {
+    console.log("PSTSB Clicked");
     $('.print-btn').prop('disabled', false);
-    $('.psts-card').removeClass('printer-card-success');
-    $('.pstsb-card').addClass('printer-card-success');
-    $('.pstsc-card').removeClass('printer-card-danger');
-    $('.psc008-card').removeClass('printer-card-success');
-    $('.psc011-card').removeClass('printer-card-warning');
+    $('.psts').removeClass('printer-card-success');
+    $('.pstsb').addClass('printer-card-success');
+    $('.pstsc').removeClass('printer-card-warning');
+    $('.psc008').removeClass('printer-card-success');
+    $('.psc011').removeClass('printer-card-warning');
+    $('.pstsf').removeClass('printer-card-danger');
   });
-  $('.pstsc').on('click', function() {
+  $('.pstsc').click(function() {
+    console.log("PSTSC Clicked");
     $('.print-btn').prop('disabled', false);
-    $('.psts-card').removeClass('printer-card-success');
-    $('.pstsb-card').removeClass('printer-card-success');
-    $('.pstsc-card').addClass('printer-card-danger');
-    $('.psc008-card').removeClass('printer-card-success');
-    $('.psc011-card').removeClass('printer-card-warning');
+    $('.psts').removeClass('printer-card-success');
+    $('.pstsb').removeClass('printer-card-success');
+    $('.pstsc').addClass('printer-card-warning');
+    $('.psc008').removeClass('printer-card-success');
+    $('.psc011').removeClass('printer-card-warning');
+    $('.pstsf').removeClass('printer-card-danger');
   });
-  $('.psc008').on('click', function() {
+  $('.psc008').click(function() {
+    console.log("PSC008 Clicked");
     $('.print-btn').prop('disabled', false);
-    $('.psts-card').removeClass('printer-card-success');
-    $('.pstsb-card').removeClass('printer-card-success');
-    $('.pstsc-card').removeClass('printer-card-danger');
-    $('.psc008-card').addClass('printer-card-success');
-    $('.psc011-card').removeClass('printer-card-warning');
+    $('.psts').removeClass('printer-card-success');
+    $('.pstsb').removeClass('printer-card-success');
+    $('.pstsc').removeClass('printer-card-warning');
+    $('.psc008').addClass('printer-card-success');
+    $('.psc011').removeClass('printer-card-warning');
+    $('.pstsf').removeClass('printer-card-danger');
   });
-  $('.psc011').on('click', function() {
+  $('.psc011').click(function() {
+    console.log("PSC011 Clicked");
     $('.print-btn').prop('disabled', false);
-    $('.psts-card').removeClass('printer-card-success');
-    $('.pstsb-card').removeClass('printer-card-success');
-    $('.pstsc-card').removeClass('printer-card-danger');
-    $('.psc008-card').removeClass('printer-card-success');
-    $('.psc011-card').addClass('printer-card-warning');
+    $('.psts').removeClass('printer-card-success');
+    $('.pstsb').removeClass('printer-card-success');
+    $('.pstsc').removeClass('printer-card-warning');
+    $('.psc008').removeClass('printer-card-success');
+    $('.psc011').addClass('printer-card-warning');
+    $('.pstsf').removeClass('printer-card-danger');
+  });
+
+  $('.pstsf').click(function() {
+    console.log("PSC011 Clicked");
+    $('.print-btn').prop('disabled', false);
+    $('.psts').removeClass('printer-card-success');
+    $('.pstsb').removeClass('printer-card-success');
+    $('.pstsc').removeClass('printer-card-warning');
+    $('.psc008').removeClass('printer-card-success');
+    $('.psc011').removeClass('printer-card-warning');
+    $('.pstsf').addClass('printer-card-danger');
   });
 
 </script>
