@@ -4,7 +4,7 @@
       <img src="./assets/cloud-computing.png" height="100px"/>
     </div>
     <div class="output">
-      <img src="./assets/pdf.png" height="70px" />
+      <img class="document-type-image" src="./assets/pdf.png" height="70px" />
       <p class="document-name"></p>
     </div>
     <span class="upload-btn">
@@ -72,7 +72,25 @@
         $('.output').show();
         console.log(files);
         for (var i = 0; i < files.length; i++) {
-            $('.document-name').text(files[i].name);
+          console.log(files[i].name);
+          var fileName = files[i].name;
+          if (fileName.toLowerCase().includes('.ppt')) {
+            console.log('PPT');
+            $('.document-type-image').attr("src","./assets/ppt.png" );
+          } else if (fileName.toLowerCase().includes('.png')) {
+            console.log('PNG');
+            $('.document-type-image').attr("src","./assets/png.png" );
+          } else if (fileName.toLowerCase().includes('.jpg')) {
+            console.log('JPG');
+            $('.document-type-image').attr("src","./assets/jpg.png" );
+          } else if (fileName.toLowerCase().includes('.doc') || fileName.toLowerCase().includes('.pages')) {
+            console.log('DOC');
+            $('.document-type-image').attr("src","./assets/doc.png" );
+          } else {
+            $('.document-type-image').attr("src","./assets/pdf.png" );
+            console.log('PDF');
+          }
+          $('.document-name').text(files[i].name);
         }
       });
     })(this);
