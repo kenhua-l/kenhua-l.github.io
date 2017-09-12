@@ -4,35 +4,35 @@
         {
             "technique": "TRADITIONAL",
             "granularity": "sentence",
-            "windows":"single",
+            "windows":"Single",
             "data_file": "data/practice-one.json",
             "stimuli": "What is AC generator?"
         },
         {
             "technique": "TRADITIONAL",
             "granularity": "sentence",
-            "windows":"multiple",
+            "windows":"Multiple",
             "data_file": "data/practice-multi.json",
             "stimuli": "In languages that employ articles, every common noun, with some exceptions, is expressed with a certain definiteness, just as many languages express every noun with a certain grammatical number."
         },
         {
             "technique": "AUTOCOMPASTE",
             "granularity": "sentence",
-            "windows":"single",
+            "windows":"Single",
             "data_file": "data/practice-one.json",
             "stimuli": "What is AC load line?"
         },
         {
             "technique": "AUTOCOMPASTE",
             "granularity": "sentence",
-            "windows":"multiple",
+            "windows":"Multiple",
             "data_file": "data/practice-multi.json",
             "stimuli": "In some languages, articles are a special part of speech, which cannot easily be combined with other parts of speech."
         },
         {
             "technique": "AUTOCOMPASTE",
             "granularity": "paragraph",
-            "windows":"multiple",
+            "windows":"Multiple",
             "data_file": "data/practice-multi.json",
             "stimuli": "In languages that employ articles, every common noun, with some exceptions, is expressed with a certain definiteness, just as many languages express every noun with a certain grammatical number. Every noun must be accompanied by the article, if any, corresponding to its definiteness, and the lack of an article (considered a zero article) itself specifies a certain definiteness. This is in contrast to other adjectives and determiners, which are typically optional. This obligatory nature of articles makes them among the most common words in many languages - in English, for example, the most frequent word is the."
         },
@@ -41,28 +41,28 @@
         {
             "technique": "AUTOCOMPASTE",
             "granularity": "sentence",
-            "windows":"multiple",
+            "windows":"Multiple",
             "data_file": "data/texts.json",
             "stimuli": "What is acceptor atoms?"
         },
         {
             "technique": "AUTOCOMPASTE",
             "granularity": "sentence",
-            "windows":"multiple",
+            "windows":"Multiple",
             "data_file": "data/texts.json",
             "stimuli": "What is acceptor atoms?"
         },
         {
             "technique": "AUTOCOMPASTE",
             "granularity": "sentence",
-            "windows":"multiple",
+            "windows":"Multiple",
             "data_file": "data/texts.json",
             "stimuli": "What is acceptor atoms?"
         },
         {
             "technique": "AUTOCOMPASTE",
             "granularity": "sentence",
-            "windows":"multiple",
+            "windows":"Multiple",
             "data_file": "data/texts.json",
             "stimuli": "What is acceptor atoms?"
         }
