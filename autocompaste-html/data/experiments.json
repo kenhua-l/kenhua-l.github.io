@@ -1,0 +1,28 @@
+{
+    "experiments": [
+        {
+            "technique": "AUTOCOMPASTE",
+            "granularity": "sentence",
+            "data_file": "data/text2.json",
+            "stimuli": "What is acceptor atoms?"
+        },
+        {
+            "technique": "AUTOCOMPASTE",
+            "granularity": "sentence",
+            "data_file": "data/texts.json",
+            "stimuli": "What is acceptor atoms?"
+        },
+        {
+            "technique": "AUTOCOMPASTE",
+            "granularity": "sentence",
+            "data_file": "data/text2.json",
+            "stimuli": "What is acceptor atoms?"
+        },
+        {
+            "technique": "AUTOCOMPASTE",
+            "granularity": "sentence",
+            "data_file": "data/texts.json",
+            "stimuli": "What is acceptor atoms?"
+        }
+    ]
+}
