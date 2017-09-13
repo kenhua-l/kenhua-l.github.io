@@ -35,58 +35,134 @@
                 <div class="col-md-8 col-md-offset-2">
                     <h1>Post-Experiment Questionnaire</h1>
                     <hr>
-                    <p>This part of the interface collects whatever post-experiment information. After the experiment, you want to collect more qualitative and quantitative feedback about the tested techniques. Some of the typical questions include, personal preferences, any difficulties participants experienced in the experiment, and areas of improvement. Please design a basic post-experimental questionnaire (no more than 10 questions).</p>
+                    <p>Answer the following questions based on the experiment you have just completed.</p>
 
                     <p>Current participant: <span class="js-pid pid"></span></p>
 
                     <form id="post-expt-form">
                         <div class="form-group">
-                            <label for="q1">Question 1 - Text</label>
-                            <input type="text" class="form-control" id="q1" name="q1" placeholder="Enter answer">
-                        </div>
-                        <div class="form-group">
-                            <label for="q2">Question 2 - Radio</label>
+                            <label for="preference">Which copy-and-paste technique do you like?</label>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="q2" id="optionsRadios1" value="radio1">
-                                Radio response 1
+                                <input type="radio" name="preference" id="optionsTraditional" value="Traditional">
+                                Traditional
                               </label>
                             </div>
                             <div class="radio">
                               <label>
-                                <input type="radio" name="q2" id="optionsRadios2" value="radio2">
-                                Radio response 2
+                                <input type="radio" name="preference" id="optionsAutoComPaste" value="AutoComPaste">
+                                AutoComPaste
                               </label>
                             </div>
                         </div>
+
+                        <label for="traditional-efficiency">Rate the Traditional technique in terms of efficiency. (1 - not efficient, 5 - very efficient)</label>
                         <div class="form-group">
-                            <label for="q3">Question 3 - Checkbox</label>
-                            <div class="checkbox">
-                              <label>
-                                <input type="checkbox" name="q3" value="checkbox1">
-                                Checkbox response 1
-                              </label>
-                            </div>
-                            <div class="checkbox">
-                              <label>
-                                <input type="checkbox" name="q3" value="checkbox2">
-                                Checkbox response 2
-                              </label>
-                            </div>
+                            <label class="radio-inline">
+                              <input type="radio" name="traditional-efficiency" id="trad-effi-1" value="1">
+                              1
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="traditional-efficiency" id="trad-effi-2" value="2">
+                              2
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="traditional-efficiency" id="trad-effi-3" value="3">
+                              3
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="traditional-efficiency" id="trad-effi-4" value="4">
+                              4
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="traditional-efficiency" id="trad-effi-5" value="5">
+                              5
+                            </label>
                         </div>
+
+
+                        <label for="traditional-usability">Rate the Traditional technique in terms of usability. (1 - not user-friendly, 5 - very user-freindly)</label>
                         <div class="form-group">
-                            <label for="q4">Question 4 - Select Options</label>
-                            <select class="form-control" name="q4">
-                                <option value="option1">Option response 1</option>
-                                <option value="option2">Option response 2</option>
-                                <option value="option3">Option response 3</option>
-                                <option value="option4">Option response 4</option>
-                                <option value="option1">Option response 5</option>
-                            </select>
+                            <label class="radio-inline">
+                              <input type="radio" name="traditional-usability" id="trad-use-1" value="1">
+                              1
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="traditional-usability" id="trad-use-2" value="2">
+                              2
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="traditional-usability" id="trad-use-3" value="3">
+                              3
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="traditional-usability" id="trad-use-4" value="4">
+                              4
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="traditional-usability" id="trad-use-5" value="5">
+                              5
+                            </label>
                         </div>
+
+                        <label for="auto-efficiency">Rate the AutoComPaste technique in terms of efficiency. (1 - not efficient, 5 - very efficient)</label>
                         <div class="form-group">
-                            <label for="q5">Question 5 - Textarea</label>
-                            <textarea class="form-control" id="q5" name="q5" placeholder="Enter response"></textarea>
+                            <label class="radio-inline">
+                              <input type="radio" name="auto-efficiency" id="auto-effi-1" value="1">
+                              1
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="auto-efficiency" id="auto-effi-2" value="2">
+                              2
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="auto-efficiency" id="auto-effi-3" value="3">
+                              3
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="auto-efficiency" id="auto-effi-4" value="4">
+                              4
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="auto-efficiency" id="auto-effi-5" value="5">
+                              5
+                            </label>
+                        </div>
+
+
+                        <label for="auto-usability">Rate the AutoComPaste technique in terms of usability. (1 - not user-friendly, 5 - very user-freindly)</label>
+                        <div class="form-group">
+                            <label class="radio-inline">
+                              <input type="radio" name="auto-usability" id="auto-use-1" value="1">
+                              1
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="auto-usability" id="auto-use-2" value="2">
+                              2
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="auto-usability" id="auto-use-3" value="3">
+                              3
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="auto-usability" id="auto-use-4" value="4">
+                              4
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="auto-usability" id="auto-use-5" value="5">
+                              5
+                            </label>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="difficulties">Did you face any difficulties during the experiment?</label>
+                            <textarea class="form-control" id="difficulties" name="difficulties" placeholder="Enter response"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedback">Do you have any feedback regarding the AutoComPaste technique?</label>
+                            <textarea class="form-control" id="feedback" name="feedback" placeholder="Enter response"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                     </form>
