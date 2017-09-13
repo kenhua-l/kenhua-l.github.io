@@ -88,6 +88,10 @@
             var pid;
 
             function next () {
+                if(currentTrial == 5 || currentTrial == 41 || currentTrial == 77){
+                  alert("Take a break for 1 minute. Click OK when you are ready.");
+                }
+
                 if (currentTrial !== 0) {
                     var trialResult = ACPToolKit.getCurrentTrialState();
 
@@ -119,9 +123,40 @@
                 }
             }
 
+            function map(id){
+              id = parseInt(id);
+              switch(id%12){
+                case 1:
+                  return "data/experiment1.json";
+                case 2:
+                  return "data/experiment2.json";
+                case 3:
+                  return "data/experiment3.json";
+                case 4:
+                  return "data/experiment4.json";
+                case 5:
+                  return "data/experiment5.json";
+                case 6:
+                  return "data/experiment6.json";
+                case 7:
+                  return "data/experiment7.json";
+                case 8:
+                  return "data/experiment8.json";
+                case 9:
+                  return "data/experiment9.json";
+                case 10:
+                  return "data/experiment10.json";
+                case 11:
+                  return "data/experiment11.json";
+                default:
+                  return "data/experiment12.json";
+              }
+            }
+
             $(document).ready(function () {
-                $.get('data/experiments.json', function (data) {
-                    pid = ACPToolKit.getCurrentParticipantId();
+              pid = ACPToolKit.getCurrentParticipantId();
+              var fileName = map(pid);
+                $.get(fileName, function (data) {
                     trialsData = data.experiments;
                     currentTrial = 0;
                     totalNumberOfTrials = trialsData.length;
