@@ -88,10 +88,6 @@
             var pid;
 
             function next () {
-                if(currentTrial == 5 || currentTrial == 41 || currentTrial == 77){
-                  alert("Take a break for 1 minute. Click OK when you are ready.");
-                }
-
                 if (currentTrial !== 0) {
                     var trialResult = ACPToolKit.getCurrentTrialState();
 
@@ -110,6 +106,10 @@
                                 stimuli, userResponse, trialStartTime,
                                 trialEndTime, trialDuration, accuracy];
                     trialData.push(row);
+                }
+
+                if(currentTrial == 5 || currentTrial == 41 || currentTrial == 77){
+                  alert("Take a break for 1 minute. Click OK when you are ready.");
                 }
 
                 if (currentTrial < totalNumberOfTrials) {
