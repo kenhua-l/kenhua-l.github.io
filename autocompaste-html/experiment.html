@@ -25,6 +25,7 @@
                         <li><a href="instructions.html">Instructions</a></li>
                         <li class="active"><a href="experiment.html">Experiment</a></li>
                         <li><a href="questionnaire-post.html">Post Questionnaire</a></li>
+                        <li><a onclick="downloadData()">Download Data</a></li>
                     </ul>
                 </div>
             </div>
@@ -39,7 +40,7 @@
                         <tbody>
                             <tr>
                                 <td>Technique</td>
-                                <td><span class="js-expt-technique">ACP</span></td>
+                                <td><span class="js-expt-technique" style="font-size:25px; color: white">ACP</span></td>
                             </tr>
                             <tr>
                                 <td>Granularity</td>
@@ -78,93 +79,185 @@
 
         <script>
 
-            var trialsData;
-            var currentTrial;
-            var totalNumberOfTrials;
-            var headers = ['Participant id', 'Technique', 'Granularity', 'Windows',
-                            'Trial no', 'Stimuli', 'User Response', 'Trial Start Time',
-                            'Trial End Time', 'Trial Time', 'Accuracy'];
-            var trialData = [];
-            var pid;
+        var trialsData;
+        var currentTrial;
+        var totalNumberOfTrials;
+        var headers = ['Participant id', 'Technique', 'Granularity', 'Windows',
+        'Trial no', 'Stimuli', 'User Response', 'Trial Start Time',
+        'Trial End Time', 'Trial Time', 'Accuracy', 'stepNumber', 'clicks',
+        'deletes', 'copy-and-pastes', 'text-selects', 'textKeys', 'arrowkeys'];
+        var trialData = [];
+        var pid;
+        //number of steps
+        var clickNumber = 0;
+        var deleteKeyPress = 0;
+        var arrowPress = 0;
+        var copyPaste = 0;
+        var textKeyPress = 0;
+        var selectTimes = 0;
+        var stepTransition = 0;
+        //states is to truncate consecutive same steps
+        //it has CLICK, SELECT, TYPE, DELETE, ARROW, CP
+        var stepState = "IDLE";
 
-            function next () {
-                if (currentTrial !== 0) {
-                    var trialResult = ACPToolKit.getCurrentTrialState();
-
-                    var technique = trialResult.technique;
-                    var granularity = trialResult.granularity;
-                    var windows = trialResult.windows;
-                    var trialNum = currentTrial;
-                    var stimuli = trialResult.stimuli;
-                    var userResponse = trialResult.user_response;
-                    var trialStartTime = trialResult.start_time;
-                    var trialEndTime = trialResult.end_time;
-                    var trialDuration = trialResult.duration;
-                    var accuracy = stimuli === userResponse ? 1 : 0;
-
-                    var row = [pid, technique, granularity, windows, trialNum,
-                                stimuli, userResponse, trialStartTime,
-                                trialEndTime, trialDuration, accuracy];
-                    trialData.push(row);
-                }
-
-                if(currentTrial == 5 || currentTrial == 41 || currentTrial == 77){
-                  alert("Take a break for 1 minute. Click OK when you are ready.");
-                }
-
-                if (currentTrial < totalNumberOfTrials) {
-                    ACPToolKit.presentTrial(trialsData[currentTrial]);
-                    currentTrial += 1;
-                    $('.js-expt-current-trial').text(currentTrial);
-                } else {
-                    // Last trial completed
-                    ACPToolKit.downloadTrialResults(trialData);
-                    window.location = 'questionnaire-post.html';
-                }
+        function downloadData(){
+          ACPToolKit.downloadTrialResults(trialData);
+        }
+        function next () {
+          if (currentTrial !== 0) {
+            var trialResult = ACPToolKit.getCurrentTrialState();
+            // var stepsNumber = 0;
+            var technique = trialResult.technique;
+            var granularity = trialResult.granularity;
+            var windows = trialResult.windows;
+            var trialNum = currentTrial;
+            var stimuli = trialResult.stimuli;
+            var userResponse = trialResult.user_response;
+            var trialStartTime = trialResult.start_time;
+            var trialEndTime = trialResult.end_time;
+            var trialDuration = trialResult.duration;
+            var accuracy = stimuli === userResponse ? 1 : 0;
+            var row = [pid, technique, granularity, windows, trialNum, stimuli,
+              userResponse, trialStartTime,trialEndTime, trialDuration,
+              accuracy, stepTransition, clickNumber, deleteKeyPress, copyPaste,
+              selectTimes, textKeyPress, arrowPress];
+              trialData.push(row);
+              clickNumber = 0;
+              deleteKeyPress = 0;
+              copyPaste = 0;
+              selectTimes = 0;
+              textKeyPress = 0;
+              arrowPress = 0;
+              stepTransition = 0;
+              stepState = "IDLE";
             }
 
-            function map(id){
-              id = parseInt(id);
-              switch(id%12){
-                case 1:
-                  return "data/experiment1.json";
-                case 2:
-                  return "data/experiment2.json";
-                case 3:
-                  return "data/experiment3.json";
-                case 4:
-                  return "data/experiment4.json";
-                case 5:
-                  return "data/experiment5.json";
-                case 6:
-                  return "data/experiment6.json";
-                case 7:
-                  return "data/experiment7.json";
-                case 8:
-                  return "data/experiment8.json";
-                case 9:
-                  return "data/experiment9.json";
-                case 10:
-                  return "data/experiment10.json";
-                case 11:
-                  return "data/experiment11.json";
-                default:
-                  return "data/experiment12.json";
+            if(currentTrial == 5 || currentTrial == 41 || currentTrial == 77){
+              alert("Take a break for 1 minute. Click OK when you are ready.");
+            }
+            if (currentTrial < totalNumberOfTrials) {
+              ACPToolKit.presentTrial(trialsData[currentTrial]);
+              currentTrial += 1;
+              $('.js-expt-current-trial').text(currentTrial);
+              if($('.js-expt-technique').html() == 'TRADITIONAL'){
+                $('.js-expt-technique').css('background-color', 'red');
+              }else {
+                $('.js-expt-technique').css('background-color', 'blue');
               }
+            } else {
+              // Last trial completed
+              ACPToolKit.downloadTrialResults(trialData);
+              window.location = 'questionnaire-post.html';
             }
+          }
 
-            $(document).ready(function () {
-              pid = ACPToolKit.getCurrentParticipantId();
-              var fileName = map(pid);
-                $.get(fileName, function (data) {
-                    trialsData = data.experiments;
-                    currentTrial = 0;
-                    totalNumberOfTrials = trialsData.length;
-                    $('.js-expt-num-trials').text(totalNumberOfTrials);
-                    trialData.push(headers);
-                    next();
-                })
+          function map(id){
+            id = parseInt(id);
+            switch(id%12){
+              case 1:
+              return "data/experiment1.json";
+              case 2:
+              return "data/experiment2.json";
+              case 3:
+              return "data/experiment3.json";
+              case 4:
+              return "data/experiment4.json";
+              case 5:
+              return "data/experiment5.json";
+              case 6:
+              return "data/experiment6.json";
+              case 7:
+              return "data/experiment7.json";
+              case 8:
+              return "data/experiment8.json";
+              case 9:
+              return "data/experiment9.json";
+              case 10:
+              return "data/experiment10.json";
+              case 11:
+              return "data/experiment11.json";
+              default:
+              return "data/experiment12.json";
+            }
+          }
+
+          $(document).ready(function () {
+            pid = ACPToolKit.getCurrentParticipantId();
+            var fileName = map(pid);
+            $.get(fileName, function (data) {
+              trialsData = data.experiments;
+              currentTrial = 0;
+              totalNumberOfTrials = trialsData.length;
+              $('.js-expt-num-trials').text(totalNumberOfTrials);
+              trialData.push(headers);
+              next();
             });
+            var ctrlDown = false;
+            $(document).keydown(function(e) {
+              if (e.keyCode == 17 || e.keyCode == 91 || e.keyCode == 93) ctrlDown = true;
+            }).keyup(function(e) {
+              if (e.keyCode == 17 || e.keyCode == 91 || e.keyCode == 93) ctrlDown = false;
+            });
+
+            $('#autocompaste-display').attr('tabIndex', 0).select(function(){
+              if(stepState!="SELECT") {
+                stepTransition++;
+                selectTimes++;
+                stepState = "SELECT";
+                console.log(stepState + stepTransition);
+              }
+            }).mouseup(function(){
+              if(window.getSelection().toString() != ''){
+                if(stepState!="SELECT") {
+                  stepTransition++;
+                  selectTimes++;
+                  stepState = "SELECT";
+                  console.log(stepState + stepTransition);
+                }
+              }else{
+                if(stepState!="CLICK"){
+                  stepTransition++;
+                  clickNumber++;
+                  stepState = "CLICK";
+                  console.log(stepState + stepTransition);
+                }
+              }
+            }).keyup(function(event){
+              keyCode = event.keyCode;
+              if(keyCode == 8 || keyCode==48){
+                if(stepState!="DELETE"){
+                  stepTransition++;
+                  deleteKeyPress++;
+                  stepState = "DELETE";
+                  console.log(stepState + stepTransition);
+                }
+              }
+            }).keydown(function(event){
+              keyCode = event.keyCode;
+              if (ctrlDown && (keyCode == 86 || keyCode == 67)) {
+                if(stepState!="CP"){
+                  stepTransition++;
+                  copyPaste++;
+                  stepState = "CP";
+                  console.log(stepState + stepTransition);
+                }
+              }else if((keyCode>=65 && keyCode<=90) || keyCode==32 || keyCode==57 || keyCode==48 || keyCode==190){
+                if(stepState!="TYPE"){
+                  stepTransition++;
+                  textKeyPress++;
+                  stepState = "TYPE";
+                  console.log(stepState + stepTransition);
+                }
+              }else if(keyCode>=37 && keyCode<=40){
+                if(stepState!="ARROW"){
+                  stepTransition++;
+                  arrowPress++;
+                  stepState = "ARROW";
+                  console.log(stepState + stepTransition);
+                }
+              }
+            });
+          });
         </script>
     </body>
 </html>
