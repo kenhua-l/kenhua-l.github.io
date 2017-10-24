@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font-family: Montserrat, arial, sans-serif;
+  font-weight: 300;
+  color: #333;
+}
+
+.company {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.job-title {
+  font-size: 18px;
+  font-style: italic;
+}
+
+.annotate {
+  font-size: 18px;
+  font-style: italic;
+  text-align: center;
+}
+
+li {
+  font-size: 16px;
+}
